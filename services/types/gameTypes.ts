@@ -1,4 +1,4 @@
-import { DrawnCard } from "./deckOfCardsTypes";
+import { DeckAPIResponse, DrawnCard } from "./deckOfCardsTypes";
 
 
 export enum Bets {
@@ -15,7 +15,8 @@ export enum GameOutcome {
     PlayerBust = "Player busts",
     DealerBust = "Dealer busts",
     PlayerAndDealerBust = "Both players bust",
-    Tie = "It's a tie"
+    Tie = "It's a tie",
+    Undefined = "Undefined"
 };
 
 
@@ -29,3 +30,32 @@ export interface GameHistoryItem {
 }
 
 
+
+
+// write  a type for the context
+export type GameContextType = {
+    gameState: string,
+    setGameState: (value: string) => void,
+    playerHand: DrawnCard[],
+    setPlayerHand: (value: DrawnCard[]) => void,
+    dealerHand: DrawnCard[],
+    setDealerHand: (value: DrawnCard[]) => void,
+    deck: DeckAPIResponse,
+    setDeck: (value: DeckAPIResponse) => void,
+    history: GameHistoryItem[],
+    setHistory: (value: GameHistoryItem[]) => void,
+    bet: number,
+    setBet: (value: number) => void,
+    playerMoney: number,
+    setPlayerMoney: (value: number) => void,
+    gameOutcome: GameOutcome,
+    setGameOutcome: (value: GameOutcome) => void,
+    animationTimeout: boolean,
+    setAnimationTimeout: (value: boolean) => void,
+    loading: boolean,
+    setLoading: (value: boolean) => void,
+    hitPlayer: () => void,
+    dealCards: () => void,
+    determinePayout: (outcome: GameOutcome, playerHand: DrawnCard[]) => number,
+    computeWinner: (playerHand: DrawnCard[], dealerHand: DrawnCard[]) => void,
+}

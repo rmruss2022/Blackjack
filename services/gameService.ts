@@ -7,7 +7,6 @@ import { GameOutcome } from './types/gameTypes';
 
 
 class GameService {
-
     // Map card values
     static readonly cardValues: { [card: string]: number } = {
         '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7,
@@ -25,7 +24,7 @@ class GameService {
 
     
     static computeHandSum(playerHand: DrawnCard[]): number {
-        
+
         let sum = 0;    
         let aceCount = 0;
     
@@ -47,10 +46,12 @@ class GameService {
     }
 
     static determineWinner(player: DrawnCard[], dealer: DrawnCard[]): GameOutcome {
+        
         const playerSum = this.computeHandSum(player);
         const dealerSum = this.computeHandSum(dealer);
         const playerHasBlackjack = this.isBlackjack(player);
         const dealerHasBlackjack = this.isBlackjack(dealer);
+
 
         if (playerHasBlackjack && dealerHasBlackjack) {
             return GameOutcome.Tie;
@@ -75,7 +76,6 @@ class GameService {
 
     // Define a function to map GameOutcome to colors
     static mapGameOutcomeToColor(outcome: GameOutcome): string {
-        console.log(outcome);
         switch (outcome) {
             case GameOutcome.PlayerWin:
                 return '#05783e';

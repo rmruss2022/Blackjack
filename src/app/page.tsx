@@ -10,16 +10,6 @@ import { ThirdwebProvider,
 
 export default function Home() {
 
-  const [playerHand, setPlayerHand] = useState(['A', 'K']); // Placeholder cards
-  const [dealerHand, setDealerHand] = useState(['?', 'Q']); // Placeholder cards
-
-  
-
-  const handleDealClick = () => {
-    // Placeholder for dealing cards logic
-    console.log('Deal cards');
-  };
-
   
   return (
     <ThirdwebProvider
